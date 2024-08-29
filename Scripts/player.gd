@@ -21,3 +21,8 @@ func _physics_process(delta):
 		animated_sprite_2d.play_idle_animation()
 	
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area):
+	if area is PickUpItem:
+		area.queue_free()

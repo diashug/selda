@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://btrpgr8bonmk6"]
+[gd_scene load_steps=29 format=3 uid="uid://btrpgr8bonmk6"]
 
 [ext_resource type="Texture2D" uid="uid://brq0rtdf8ift3" path="res://Assets/Actor/Characters/Hunter/SpriteSheet.png" id="1_6mfqo"]
 [ext_resource type="Texture2D" uid="uid://dcfqukjmxwra3" path="res://Assets/Actor/Characters/Hunter/SeparateAnim/Idle.png" id="1_og00u"]
-[ext_resource type="Script" path="res://Scenes/Scripts/player.gd" id="1_vwis5"]
-[ext_resource type="Script" path="res://Scenes/Scripts/animation_controller.gd" id="4_ivhlo"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_vwis5"]
+[ext_resource type="Script" path="res://Scripts/animation_controller.gd" id="4_ivhlo"]
 [ext_resource type="Texture2D" uid="uid://bl7yqetp4lngp" path="res://Assets/Actor/Characters/Hunter/SeparateAnim/Walk.png" id="4_yxw1c"]
+[ext_resource type="Shape2D" uid="uid://p2ihunrayb6k" path="res://Resources/Player/player_collision_shape.tres" id="6_hajjo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3oxfq"]
 atlas = ExtResource("1_og00u")
@@ -193,7 +194,7 @@ animations = [{
 radius = 7.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_vwis5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -208,3 +209,11 @@ shape = SubResource("CircleShape2D_jgs0h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("6_hajjo")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
