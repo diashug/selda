@@ -24,3 +24,14 @@ position = Vector2(168, 167)
 [node name="PickUpItem" parent="." instance=ExtResource("3_ao68a")]
 position = Vector2(101, 187)
 inventory_item = ExtResource("4_fry2p")
+stacks = 10
+
+[node name="PickUpItem2" parent="." instance=ExtResource("3_ao68a")]
+position = Vector2(115, 208)
+inventory_item = ExtResource("4_fry2p")
+stacks = 90
+
+[node name="PickUpItem3" parent="." instance=ExtResource("3_ao68a")]
+position = Vector2(148, 193)
+inventory_item = ExtResource("4_fry2p")
+stacks = 20
