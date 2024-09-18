@@ -114,7 +114,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"back-walk",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -139,7 +139,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"front-walk",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -164,7 +164,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"left-walk",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -189,7 +189,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"right-walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgs0h"]

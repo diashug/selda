@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cbos5dytcsnae"]
+[gd_scene load_steps=6 format=4 uid="uid://cbos5dytcsnae"]
 
 [ext_resource type="TileSet" uid="uid://dcyo4tvvatt2p" path="res://Tilesets/tileset.tres" id="1_j51cf"]
 [ext_resource type="PackedScene" uid="uid://btrpgr8bonmk6" path="res://Scenes/player.tscn" id="2_537td"]
 [ext_resource type="PackedScene" uid="uid://lk0vuh3onv70" path="res://Scenes/pickup_item.tscn" id="3_ao68a"]
 [ext_resource type="Resource" uid="uid://b4badr76f75ye" path="res://Resources/GoldCoin/gold-coin.tres" id="4_fry2p"]
+[ext_resource type="Resource" uid="uid://b1utuswmdcvpi" path="res://Resources/Weapons/Sword/sword_inventory_item.tres" id="4_rgi3a"]
 
 [node name="Main" type="Node"]
 
@@ -23,7 +24,7 @@ position = Vector2(168, 167)
 
 [node name="PickUpItem" parent="." instance=ExtResource("3_ao68a")]
 position = Vector2(101, 187)
-inventory_item = ExtResource("4_fry2p")
+inventory_item = ExtResource("4_rgi3a")
 stacks = 10
 
 [node name="PickUpItem2" parent="." instance=ExtResource("3_ao68a")]
