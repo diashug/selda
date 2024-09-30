@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmdu40m5rl481"]
+
+[ext_resource type="PackedScene" uid="uid://dqe8xn3l7e162" path="res://Scenes/UI/on_screen_equipment_slot.tscn" id="1_pvhi3"]
+[ext_resource type="Script" path="res://Scripts/on_screen_ui.gd" id="1_s5urp"]
+
+[node name="OnScreenUI" type="CanvasLayer"]
+script = ExtResource("1_s5urp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="RightHandSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_pvhi3")]
+unique_name_in_owner = true
+layout_mode = 2
+slot_name = "Right Hand"
+
+[node name="LeftHandSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_pvhi3")]
+unique_name_in_owner = true
+layout_mode = 2
+slot_name = "Left Hand"
+
+[node name="PotionSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_pvhi3")]
+unique_name_in_owner = true
+layout_mode = 2
+slot_name = "Potion"
+
+[node name="SpellSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_pvhi3")]
+unique_name_in_owner = true
+layout_mode = 2
+slot_name = "Spell"

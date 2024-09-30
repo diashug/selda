@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D
-@onready var inventory: Inventory = $Inventory
+@onready var animated_sprite_2d = %AnimatedSprite2D
+@onready var inventory = $Inventory
 
 const SPEED = 3000.0
 

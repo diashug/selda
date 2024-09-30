@@ -228,5 +228,6 @@ visible = false
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_vboau")
+items = null
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
