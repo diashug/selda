@@ -1,14 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://btrpgr8bonmk6"]
+[gd_scene load_steps=38 format=3 uid="uid://btrpgr8bonmk6"]
 
 [ext_resource type="Texture2D" uid="uid://brq0rtdf8ift3" path="res://Assets/Actor/Characters/Hunter/SpriteSheet.png" id="1_6mfqo"]
 [ext_resource type="Texture2D" uid="uid://dcfqukjmxwra3" path="res://Assets/Actor/Characters/Hunter/SeparateAnim/Idle.png" id="1_og00u"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_vwis5"]
+[ext_resource type="Texture2D" uid="uid://t15s0bf771h5" path="res://Assets/Actor/Characters/Hunter/SeparateAnim/Attack.png" id="2_cl1em"]
 [ext_resource type="Script" path="res://Scripts/animation_controller.gd" id="4_ivhlo"]
 [ext_resource type="Texture2D" uid="uid://bl7yqetp4lngp" path="res://Assets/Actor/Characters/Hunter/SeparateAnim/Walk.png" id="4_yxw1c"]
 [ext_resource type="Shape2D" uid="uid://p2ihunrayb6k" path="res://Resources/Player/player_collision_shape.tres" id="6_hajjo"]
 [ext_resource type="PackedScene" uid="uid://d388xx0sevsyy" path="res://Scenes/UI/inventory_ui.tscn" id="7_rtnjw"]
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="8_vboau"]
 [ext_resource type="PackedScene" uid="uid://cmdu40m5rl481" path="res://Scenes/UI/on_screen_ui.tscn" id="9_hqruo"]
+[ext_resource type="Script" path="res://Scripts/combat_system.gd" id="10_tuoep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de57o"]
+atlas = ExtResource("2_cl1em")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3oxfq"]
 atlas = ExtResource("1_og00u")
@@ -30,6 +36,10 @@ region = Rect2(16, 32, 16, 16)
 atlas = ExtResource("4_yxw1c")
 region = Rect2(16, 48, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0y83"]
+atlas = ExtResource("2_cl1em")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylgti"]
 atlas = ExtResource("1_6mfqo")
 region = Rect2(0, 0, 16, 16)
@@ -50,6 +60,10 @@ region = Rect2(0, 32, 16, 16)
 atlas = ExtResource("4_yxw1c")
 region = Rect2(0, 48, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8np8w"]
+atlas = ExtResource("2_cl1em")
+region = Rect2(32, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mc6im"]
 atlas = ExtResource("1_og00u")
 region = Rect2(32, 0, 16, 16)
@@ -69,6 +83,10 @@ region = Rect2(32, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_emkm0"]
 atlas = ExtResource("4_yxw1c")
 region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04wi2"]
+atlas = ExtResource("2_cl1em")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eypmv"]
 atlas = ExtResource("1_og00u")
@@ -94,6 +112,14 @@ region = Rect2(48, 48, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_de57o")
+}],
+"loop": true,
+"name": &"back-attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3oxfq")
 }],
 "loop": true,
@@ -115,7 +141,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"back-walk",
-"speed": 8.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0y83")
+}],
+"loop": true,
+"name": &"front-attack",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -140,7 +174,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"front-walk",
-"speed": 8.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8np8w")
+}],
+"loop": true,
+"name": &"left-attack",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,7 +207,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"left-walk",
-"speed": 8.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04wi2")
+}],
+"loop": true,
+"name": &"right-attack",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -190,7 +240,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"right-walk",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgs0h"]
@@ -203,7 +253,7 @@ script = ExtResource("1_vwis5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_8gj6y")
-animation = &"left-walk"
+animation = &"back-attack"
 autoplay = "front-idle"
 script = ExtResource("4_ivhlo")
 
@@ -229,4 +279,24 @@ visible = false
 unique_name_in_owner = true
 script = ExtResource("8_vboau")
 
+[node name="CombatSystem" type="Node2D" parent="."]
+script = ExtResource("10_tuoep")
+
+[node name="RightHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
+
+[node name="Area2D" type="Area2D" parent="CombatSystem/RightHandWeaponSprite"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/RightHandWeaponSprite/Area2D"]
+
+[node name="LeftHandWeaponSprite" type="Sprite2D" parent="CombatSystem"]
+
+[node name="Area2D" type="Area2D" parent="CombatSystem/LeftHandWeaponSprite"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatSystem/LeftHandWeaponSprite/Area2D"]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

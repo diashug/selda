@@ -23,7 +23,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
 func _on_area_2d_area_entered(area):
 	if area is PickUpItem:
 		inventory.add_item(area.inventory_item, area.stacks)
