@@ -32,25 +32,25 @@ func get_data_for_direction(direction: String):
 	match direction:
 		"left":
 			return {
-				"attachement_position": left_attachement_position,
+				"attachment_position": left_attachement_position,
 				"rotation": left_rotation,
 				"z_index": left_z_index
 			}
 		"right":
 			return {
-				"attachement_position": right_attachement_position,
+				"attachment_position": right_attachement_position,
 				"rotation": right_rotation,
 				"z_index": right_z_index
 			}
 		"front":
 			return {
-				"attachement_position": front_attachement_position,
+				"attachment_position": front_attachement_position,
 				"rotation": front_rotation,
 				"z_index": front_z_index
 			}
 		"back":
 			return {
-				"attachement_position": back_attachement_position,
+				"attachment_position": back_attachement_position,
 				"rotation": back_rotation,
 				"z_index": back_z_index
 			}

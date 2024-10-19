@@ -4,6 +4,7 @@ class_name Inventory
 
 @onready var inventory_ui: InventoryUI = $"../InventoryUI"
 @onready var on_screen_ui: OnScreenUI = $"../OnScreenUI"
+@onready var combat_system = $"../CombatSystem"
 
 @export var items: Array[InventoryItem] = []
 
@@ -53,3 +54,4 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 func on_item_equipped(idx: int, slot_to_equip: String):
 	var item_to_equip = items[idx]
 	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
+	combat_system.set_active_weapon(item_to_equip.weapon_item, slot_to_equip)

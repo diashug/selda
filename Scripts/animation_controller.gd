@@ -2,6 +2,8 @@ extends AnimatedSprite2D
 
 class_name AnimationController
 
+signal attack_animation_finished
+
 const MOVEMENT_TO_IDLE = {
 	"back-walk": "back-idle",
 	"front-walk": "front-idle",
@@ -51,3 +53,4 @@ func play_attack_to_idle_animation():
 		var direction = DIRECTION_TO_ATTACK_ANIMATION.find_key(animation_string)
 		play(direction + "-idle")
 		attack_direction = null
+		attack_animation_finished.emit()
