@@ -26,16 +26,21 @@ const DIRECTION_TO_ATTACK_VECTOR = {
 }
 
 var attack_direction = null
+var item_eject_direction = Vector2.DOWN
 
 func play_movement_animation(velocity: Vector2):
 	if velocity.x > 0:
+		item_eject_direction = Vector2.RIGHT
 		play("right-walk")
 	elif velocity.x < 0:
+		item_eject_direction = Vector2.LEFT
 		play("left-walk")
 	
 	if velocity.y > 0:
+		item_eject_direction = Vector2.DOWN
 		play("front-walk")
 	elif velocity.y < 0:
+		item_eject_direction = Vector2.UP
 		play("back-walk")
 
 func play_idle_animation():
